@@ -113,6 +113,7 @@
             Controls.Add(sqlDataGridView);
             Controls.Add(buttonRunScript);
             Name = "SQLPage";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "SQLPage";
             ((System.ComponentModel.ISupportInitialize)sqlDataGridView).EndInit();
             ResumeLayout(false);

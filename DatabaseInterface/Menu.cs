@@ -10,7 +10,8 @@ namespace DatabaseInterface
 {
     public partial class Menu : Form
     {
-        MySqlConnection con = new MySqlConnection("SERVER=localhost; DATABASE=proiectbd; UID=root; PASSWORD=123456;");
+
+        MySqlConnection con;
         List<String> tables = new List<string>();
         List<String> views = new List<string>();
         DataTable dataTable = new DataTable();
@@ -23,6 +24,16 @@ namespace DatabaseInterface
         public Menu()
         {
             InitializeComponent();
+
+            Connection conPage = new Connection();
+            conPage.ShowDialog();
+            con = new MySqlConnection(Connection.getQuery());
+
+            update();
+        }
+
+        private void update()
+        {
             con.Open();
 
             // tables
@@ -70,6 +81,7 @@ namespace DatabaseInterface
         {
             timerSelectDropDown.Start();
         }
+
         private void buttonFetch_Click(object sender, EventArgs e)
         {
             if (buttonSelect.Text == "SELECT") { return; }
@@ -85,6 +97,7 @@ namespace DatabaseInterface
 
             dataGridView1.DataSource = dataTable;
         }
+
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             try
@@ -215,12 +228,19 @@ namespace DatabaseInterface
             {
                 buttonSelect.Text = Item.valueSelected;
 
-                //if (isSelectExpand) 
-                    timerSelectDropDown.Start();
+                if (isSelectExpand) timerSelectDropDown.Start();
                 if (isViewExpand) timerViewsDropDown.Start();
 
                 Item.isSelected = false;
             }
+        }
+
+        private void buttonConnect_Click(object sender, EventArgs e)
+        {
+            Connection conPage = new Connection();
+            conPage.ShowDialog();
+            con = new MySqlConnection(Connection.getQuery());
+            update();
         }
     }
 }

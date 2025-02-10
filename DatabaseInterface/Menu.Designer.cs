@@ -43,6 +43,7 @@
             timerSelectDropDown = new System.Windows.Forms.Timer(components);
             timerViewsDropDown = new System.Windows.Forms.Timer(components);
             refresh = new System.Windows.Forms.Timer(components);
+            buttonConnect = new Button();
             containerSelect.SuspendLayout();
             panelTabble.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -53,7 +54,7 @@
             // containerSelect
             // 
             containerSelect.Controls.Add(panelTabble);
-            containerSelect.Location = new Point(50, 50);
+            containerSelect.Location = new Point(50, 125);
             containerSelect.Margin = new Padding(0);
             containerSelect.MaximumSize = new Size(150, 50);
             containerSelect.MinimumSize = new Size(150, 50);
@@ -218,12 +219,29 @@
             refresh.Interval = 1;
             refresh.Tick += refresh_Tick;
             // 
+            // buttonConnect
+            // 
+            buttonConnect.BackColor = Color.FromArgb(147, 193, 159);
+            buttonConnect.FlatAppearance.BorderColor = Color.FromArgb(92, 163, 111);
+            buttonConnect.FlatAppearance.BorderSize = 2;
+            buttonConnect.FlatStyle = FlatStyle.Flat;
+            buttonConnect.Font = new Font("Segoe UI", 13F);
+            buttonConnect.Location = new Point(50, 50);
+            buttonConnect.Margin = new Padding(0);
+            buttonConnect.Name = "buttonConnect";
+            buttonConnect.Size = new Size(150, 50);
+            buttonConnect.TabIndex = 8;
+            buttonConnect.Text = "Connect";
+            buttonConnect.UseVisualStyleBackColor = false;
+            buttonConnect.Click += buttonConnect_Click;
+            // 
             // Menu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(230, 204, 178);
             ClientSize = new Size(1264, 681);
+            Controls.Add(buttonConnect);
             Controls.Add(containerViews);
             Controls.Add(buttonSQL);
             Controls.Add(buttonCommit);
@@ -232,6 +250,7 @@
             Controls.Add(dataGridView1);
             Controls.Add(containerSelect);
             Name = "Menu";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu";
             containerSelect.ResumeLayout(false);
             panelTabble.ResumeLayout(false);
@@ -257,5 +276,6 @@
         private System.Windows.Forms.Timer timerSelectDropDown;
         private System.Windows.Forms.Timer timerViewsDropDown;
         private System.Windows.Forms.Timer refresh;
+        private Button buttonConnect;
     }
 }
